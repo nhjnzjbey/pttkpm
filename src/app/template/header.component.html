@@ -1,0 +1,46 @@
+<mat-toolbar color="accen" class="tool-bar">
+
+  <div class="container">
+    <div style="position: absolute;">
+      <span class="app-name ">Local Friend</span>
+    </div>
+    <div fxShow="true" fxHide.lt-md="true" style="position: absolute; right: 0px;">
+
+      <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+      <button mat-button [routerLink]="['/']"> Home </button>
+      <button mat-button [routerLink]="['/go']"> Go </button>
+      <button mat-button [matMenuTriggerFor]="menuUser"> User </button>
+      <button mat-button [routerLink]="['/aboutus']"> About Us</button>
+
+    </div>
+
+
+  </div>
+  <div fxShow="true" fxHide.gt-sm="true" style="position: absolute; right: 0px;">
+
+    <button mat-button [matMenuTriggerFor]="menu">
+      <i class="material-icons">
+        menu
+      </i>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['/']"> Home </button>
+      <button mat-menu-item [routerLink]="['/go']"> Go </button>
+      <button mat-menu-item [matMenuTriggerFor]="menuUser"> User </button>
+      <button mat-menu-item [routerLink]="['/aboutus']"> About Us</button>
+    </mat-menu>
+
+  </div>
+  <mat-menu #menuUser="matMenu">
+    <div *ngIf="user != null">
+      Hello {{user.username}}
+    </div>
+    <button *ngIf="user == null" mat-menu-item (click)="onClickLogin()"> Login</button>
+    <button *ngIf="user == null" mat-menu-item (click)="onClickRegister()"> Register </button>
+    <mat-divider *ngIf="user == null"></mat-divider>
+    <button *ngIf="user != null" mat-menu-item [routerLink]="['/user/upload']"> Upload </button>
+    <mat-divider></mat-divider>
+    <button *ngIf="user != null" mat-menu-item> Log out</button>
+  </mat-menu>
+
+</mat-toolbar>

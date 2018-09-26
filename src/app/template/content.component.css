@@ -1,0 +1,6 @@
+.fill-screen{
+    background-image:url("http://localhost:4200/assets/images/sunrisequynhon.webp"); 
+    background-repeat:no-repeat;
+    background-size:cover;
+    height: 100%;
+}

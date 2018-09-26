@@ -1,0 +1,56 @@
+<div style="position: relative; margin: auto; background-color: rgba(255, 255, 255, 1)">
+    <div>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name Post" [(ngModel)]="post.name">
+        </mat-form-field>
+
+    </div>
+    <div>
+        <button mat-button #upload (click)="browserFile.click()">Upload file</button>
+        <input #browserFile type="file" [hidden]="true" accept="image/*" multiple (change)="onSelectFile($event)">
+
+        <button mat-button (click)="onClickUpload()">Submit</button>
+
+    </div>
+
+    <div>
+
+        <div fxShow="true" fxHide.lt-md="true" style=" flex-flow: row wrap;  display: flex;">
+                    
+            <div *ngFor="let item of post.items; let i = index" class="item" fxFlex="48%">
+                <app-upload-item [item]='item'></app-upload-item>
+            </div>
+
+        </div>
+
+        <div fxShow="true" fxHide.gt-sm="true" fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap">
+            bbbbb
+            <div fxFlex="30%" fxFlex.xs="40" style="background-color: red">
+                first-section
+            </div>
+
+            <div fxFlex="30%" fxFlex.xs="40" style="background-color: green">
+                first-section
+            </div>
+
+            <div fxFlex="30%" fxFlex.xs="40" style="background-color: yellow">
+                first-section
+            </div>
+            <div fxFlex="30%" fxFlex.xs="40" style="background-color: green">
+                first-section
+            </div>
+
+            <div fxFlex="30%" fxFlex.xs="40" style="background-color: yellow">
+                first-section
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+</div>

@@ -1,0 +1,11 @@
+.example-card {
+    display:inline-block;
+    width: 15%;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.container{
+    white-space: nowrap;
+    overflow-x:auto;
+}

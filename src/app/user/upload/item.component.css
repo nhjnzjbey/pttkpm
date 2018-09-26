@@ -1,0 +1,27 @@
+img {
+    height: 20vh;
+}
+   
+.cover {
+    width: 300px;
+    max-width: 300px;
+    object-fit: cover;
+}
+
+.item-infor{
+    padding-left: 15px;
+
+} 
+
+.float-left{
+    float: left;
+}
+
+.full-width {
+    width: 100%;
+}
+
+agm-map {
+    height: 300px;
+    width: 300px;
+}

@@ -1,0 +1,22 @@
+<div class='md-padding container'>
+    <div *ngFor="let item of items" class="example-card" dnd-draggable [dragEnabled]="true" [dropZones]="['zoneAdd']" [dragData]="item">
+        <mat-card>
+            <mat-card-content>
+                <mat-icon>local_dining</mat-icon>
+                {{item.name}}
+            </mat-card-content>
+            <img mat-card-image src="{{item.urlFile}}" title="{{item.description}}">
+            <mat-card-actions style="text-align: right">
+                <button mat-icon-button title="{{item.address.full}}">
+                    <mat-icon>location_on</mat-icon>
+                </button>
+                <button mat-icon-button title="Add to Timeline" color="primary">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <button mat-icon-button title="Remove from Selected" color="warn">
+                    <mat-icon>clear</mat-icon>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

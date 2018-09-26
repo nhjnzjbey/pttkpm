@@ -1,0 +1,47 @@
+<div fxlayout="row" style="flex-direction: row; box-sizing: border-box; display: flex;">
+    <div fxflex="45%" fxflex.gt-sm="25" style="cursor: pointer; flex: 1 1 100%; box-sizing: border-box; flex-direction: row; max-width: 45%; display: flex;">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{event.data.name}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="{{event.data.urlFile}}">
+        </mat-card>
+    </div>
+    <div fxflex="" style="cursor: pointer; flex: 1 1 0%; box-sizing: border-box; flex-direction: column; display: flex;">
+        <div fxflex="30%" style="flex: 1 1 auto; box-sizing: border-box;">
+            <div style="padding: 10px;">
+                <div class="rowEdit">
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="dateEventPicker" [max]="toDate" [min]="fromDate" [(ngModel)]="event.time.date" placeholder="Date Event">
+                        <mat-datepicker-toggle matSuffix [for]="dateEventPicker"></mat-datepicker-toggle>
+                        <mat-datepicker #dateEventPicker></mat-datepicker>
+                    </mat-form-field>
+
+                    <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="10px">
+                        <mat-form-field>
+                            <input matInput placeholder="From" type="time" step="1800" [(ngModel)]="timeBegin">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="To" type="time" step="1800" [(ngModel)]="timeEnd">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="rowEdit">
+                    <div>
+                        Address:
+                        <a href="{{event.data.address.urlSearch}}" target="blank" title="Open Location on Google Map">
+                            {{event.data.address.full}}
+                        </a>
+                    </div>
+                </div>
+                <div class="rowEdit right action-buttons">
+                    <button mat-button color="warn" (click)="onClickCancel($event)">Cancel</button>
+                    <button mat-button color="primary" (click)="onClickSubmit()">Submit</button>
+                </div>
+                <div class="rowEdit" *ngIf="event.data.description" class="description">
+                    {{event.data.description}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
