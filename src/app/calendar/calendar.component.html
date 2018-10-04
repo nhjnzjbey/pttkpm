@@ -1,49 +1,32 @@
-<!-- DivTable.com -->
-
-<!--header-->
-<div class="divTable" style="width: calc(100% - 16px)">
-    <div class="divTableHeading">
-        <div class="divTableRow">
-            <div class="divTableHead divTableCellFirst">&nbsp;</div>
-            <div *ngFor="let date of dates" class="divTableHead">{{date | date: 'dd MMMM yyyy'}}</div>
-        </div>
-    </div>
-</div>
-
-<!-- body -->
-<div class="table-body-calendar">
-    <div class="divTable">
-        <div class="divTableBody">
-            <div *ngFor="let time of rangeHour" class="divTableRow">
-                <div *ngIf="time %2 == 0" class="divTableCell divTableCellFirst no-border-bottom">
-                    <div class="col-hour">
-                        {{time/2}}h
-                    </div>
-                </div>
-                <div *ngIf="time %2 == 1" class="divTableCell divTableCellFirst no-border-top">&nbsp;</div>
-
-                <div *ngFor="let date of dates; let indexCol = index" class="divTableCell" 
-                    dnd-droppable [dropZones]="['zoneAdd', 'zoneModify']" (onDropSuccess)="onDragDrop($event)"
-                    [attr.data-col]="indexCol" [attr.data-row]="time">&nbsp;</div>
+<div class="wrapper">
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+        Calendar
+        <small>Control panel</small>
+      </h1>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <!-- /.col -->
+        <div class="col-md-12">
+          <div class="box box-primary">
+            <div class="box-body no-padding">
+              <!-- THE CALENDAR -->
+              <div *ngIf="calendarOptions">
+                <ng-fullcalendar #ucCalendar [options]="calendarOptions" (eventClick)="eventClick($event.detail)"
+                  (eventDrop)="updateEvent($event.detail)" (eventResize)="updateEvent($event.detail)" (clickButton)="clickButton($event.detail)"></ng-fullcalendar>
+              </div>
             </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /. box -->
         </div>
-    </div>
-
-    <!--events -->
-    <div *ngFor="let event of events; let i = index" dnd-draggable [dragEnabled]="true" [dropZones]="['zoneModify']" [dragData]="event" 
-        class="event"
-        [style.top.px]="event.position.height * event.time.pointBegin.row" 
-        [style.left.px]="event.position.firstLeft + event.position.width * event.time.pointBegin.col" 
-        [style.width.px]="event.position.width" 
-        [style.height.px]="event.position.height * (event.time.pointEnd.row - event.time.pointBegin.row)">
-        <div class="type" title="{{event.data.description}}" (click)="onClickModifyEvent(i)">
-            <i class="material-icons">
-                <!-- local_dining location_on-->
-                directions_run
-            </i>
-        </div>
-        <div class="name">
-            {{event.data.name}}
-        </div>
-    </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
 </div>

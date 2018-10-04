@@ -25,30 +25,28 @@ import { UploadComponent } from './user/upload/upload.component';
 import { ItemComponent } from './user/upload/item.component';
 import { UploadService } from './service/user/upload.service';
 import { LoginService } from './service/user/login.service';
-import { CalendarService } from './service/calendar/calendar.service';
-import { CalendarComponent } from './calendar/calendar.component';
-import { EventDetailComponent } from './calendar/event.detail/event.detail.component';
-
+import { MyCalendarComponent } from './calendar/calendar.component';
+import { FullCalendarModule } from 'ng-fullcalendar';
+import { EventSesrvice } from './calendar/event.service';
 
 @NgModule({
   declarations: [
     AppComponent, HeaderComponent, ContentComponent, FooterComponent,
-    GoComponent, AboutUsComponent, UploadComponent, ItemComponent, CalendarComponent,
-    EventDetailComponent
+    GoComponent, AboutUsComponent, UploadComponent, ItemComponent, MyCalendarComponent
   ],
-  entryComponents: [EventDetailComponent],
+  entryComponents: [],
   imports: [
     CommonModule, BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, HttpClientModule,
     MatToolbarModule, MatSidenavModule, MatButtonModule, MatMenuModule, MatIconModule, MatDividerModule,
     MatFormFieldModule, MatInputModule, MatSelectModule, MatGridListModule, MatCardModule, MatBottomSheetModule,
-    MatDatepickerModule, MatNativeDateModule,
+    MatDatepickerModule, MatNativeDateModule, FullCalendarModule,
     FlexLayoutModule, routing, DndModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAdZU-52fCD9RWduVRMQSiF7FDFS5ifjxw',
       libraries: ['places']
     })
   ],
-  providers: [UploadService, LoginService, CalendarService],
+  providers: [UploadService, LoginService, EventSesrvice],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
